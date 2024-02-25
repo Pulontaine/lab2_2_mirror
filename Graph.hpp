@@ -275,9 +275,9 @@ namespace graph{
     //A reference to the mapped value of the new element if no element with key key existed.
     //Otherwise, a reference to the mapped value of the existing element whose key is equivalent to key.
     template <typename Key, typename Value, typename Weight>
-    Value& Graph<Key, Value, Weight>::operator[](Key k) const{
-        return vertices[k].values;
-    }
+    Value& Graph<Key, Value, Weight>::operator[](const Key &k) { 
+        return vertices[k].value(); 
+    };
 
 
 //iterators
@@ -302,13 +302,28 @@ namespace graph{
         return vertices.cend();
     }
 
-    // std::ostream& operator<<(std::ostream& out, const Edge& edge) {
-    //     out << edge.from << " -> " << edge.to << edge.properties << ";\n";
-    //     return out;
-    // }
-
-    
     
 
+
+
+
+
+
+    //sem6
+    template <typename Key, typename Value, typename Weight>
+    void Graph<Key, Value, Weight>::print_graphviz(std::ostream& graph_viz){
+
+    graph_viz << "digraph G" << " {\n";
+    graph_viz << "node [shape=record fontname=Arial]\n";
+
+    for (auto& [i_key, i_node] : vertices) {
+        for (auto& [j_key_to, j_weight] : i_node) {
+            graph_viz << "\"" << i_key << "\" ->" << "\"" << j_key_to << "\" [label = " << j_weight << "]\n";
+        }
+    }
+
+    graph_viz << "}";
+    
+}
 
 };

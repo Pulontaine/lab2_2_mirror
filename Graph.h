@@ -24,7 +24,7 @@ namespace graph{
 
             Graph& operator=(const Graph &copy);
             Graph& operator=(Graph &&moved);
-            value_type& operator[](key_type k) const;
+            Value& operator[](const Key &k);
 
             bool empty();
             size_t size();
@@ -53,6 +53,8 @@ namespace graph{
             void view();
             size_t delete_node(key_type k);
             void RenderDot(std::ostream& out);
+
+            void print_graphviz(std::ostream& graph_viz); // для 6 семинара
             
 
         private:
