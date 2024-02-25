@@ -1,0 +1,10 @@
+digraph G {
+node [shape=record fontname=Arial]
+10 [label="Key: 9; Value: 10"]
+1000 [label="Key: 7; Value: 1000"]
+500 [label="Key: 123; Value: 500"]
+10 -> 10
+10 -> 500
+10 -> 1000
+500 -> 1000
+}
